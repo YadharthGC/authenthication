@@ -22,6 +22,9 @@ function Newpass() {
         password,
       });
       window.alert(post.data.message);
+      if (true) {
+        navigate("/", { replace: true });
+      }
     } catch (error) {}
   };
 
