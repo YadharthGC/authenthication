@@ -21,6 +21,7 @@ function Newpass() {
         did,
         password,
       });
+      window.alert(post.data.message);
     } catch (error) {}
   };
 
