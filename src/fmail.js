@@ -13,7 +13,9 @@ function Fmail() {
   let handlesubmit = async (e) => {
     try {
       e.preventDefault();
-      let post = await axios.post("http://localhost:3003/fmail", { gmail });
+      let post = await axios.post("https://yadharthauth.herokuapp.com/fmail", {
+        gmail,
+      });
       window.alert(post.data.message);
       if (post.data.status) {
         navigate("/", { replace: true });

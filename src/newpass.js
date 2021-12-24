@@ -16,7 +16,7 @@ function Newpass() {
       console.log(e);
       console.log(did, params.token);
       let toke = params.token;
-      let post = await axios.post("http://localhost:3003/fpass", {
+      let post = await axios.post("https://yadharthauth.herokuapp.com/fpass", {
         toke,
         did,
         password,

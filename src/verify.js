@@ -13,7 +13,10 @@ function Verify() {
   let handlesubmit = async (e) => {
     try {
       e.preventDefault();
-      let post = await axios.post("http://localhost:3003/code", { code, did });
+      let post = await axios.post("https://yadharthauth.herokuapp.com/code", {
+        code,
+        did,
+      });
       window.alert(post.data.message);
       if (post.data.message === "Account verified") {
         navigate("/", { replace: true });
