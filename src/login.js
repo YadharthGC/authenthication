@@ -10,8 +10,8 @@ function Login() {
   const navigate = useNavigate();
 
   let handlesubmit = async (e) => {
-    e.preventDefault();
     try {
+      e.preventDefault();
       let post = await axios.post("https://yadharthauth.herokuapp.com/login", {
         gmail,
         password,
@@ -19,6 +19,9 @@ function Login() {
       window.alert(post.data.message);
       if (post.data.message === "gmail is not verified") {
         navigate(`/verify/${post.data.id}`);
+      } else if (post.data.status === true) {
+        window.localStorage.setItem("app_token", post.data.token);
+        navigate("/url", { replace: true });
       } else {
       }
     } catch (error) {}

@@ -9,8 +9,9 @@ function Register() {
   const [password, setpassword] = useState([]);
   const navigate = useNavigate();
 
-  let handlesubmit = async () => {
+  let handlesubmit = async (e) => {
     try {
+      e.preventDefault();
       let post = await axios.post(
         "https://yadharthauth.herokuapp.com/register",
         {
@@ -18,6 +19,11 @@ function Register() {
           password,
         }
       );
+      window.alert(post.data.message);
+      if (post.data.status === "true") {
+        navigate("/", { replace: true });
+      } else {
+      }
     } catch (error) {}
   };
 

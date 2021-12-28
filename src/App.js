@@ -7,6 +7,7 @@ import Register from "./register";
 import Verify from "./verify";
 import Fmail from "./fmail";
 import Newpass from "./newpass";
+import Urls from "./url";
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
           <Route path="/register" element={<Register />} exact={true} />
           <Route path="/verify/:id" element={<Verify />} exact={true} />
           <Route path="/fmail" element={<Fmail />} exact={true} />
-          <Route path="/:token/:id" element={<Newpass />} exact={true} />{" "}
+          <Route path="/:token/:id" element={<Newpass />} exact={true} />
+          <Route path="/url" element={<Urls />} exact={true} />
         </Routes>
       </Router>
     </div>
