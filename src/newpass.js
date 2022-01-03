@@ -1,60 +1,77 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 
 function Newpass() {
   const [password, setpassword] = useState([]);
+  const [cpassword, setcpassword] = useState([]);
+  const navigate = useNavigate();
   const params = useParams();
   const did = params.id;
-  const navigate = useNavigate();
+  const token = params.token;
 
   let handlesubmit = async (e) => {
     try {
       e.preventDefault();
-      console.log(e);
-      console.log(did, params.token);
-      let toke = params.token;
-      let post = await axios.post("https://yadharthauth.herokuapp.com/fpass", {
-        toke,
-        did,
-        password,
-      });
-      window.alert(post.data.message);
-      if (true) {
-        navigate("/", { replace: true });
+      if (password === cpassword) {
+        console.log(token, did);
+        let post = await axios.post(
+          "https://yadharthauth.herokuapp.com/newpass",
+          {
+            password,
+            token,
+            did,
+          }
+        );
+        window.alert(post.data.message);
+        if (post.data.status === true) {
+          navigate("/", { replace: true });
+        }
+      } else {
+        window.alert("Check your password");
       }
     } catch (error) {}
   };
 
   return (
-    <div className="Login">
-      <div className="loginbox">
-        <div className="key">New Password</div>
-        <div className="keysub" style={{ textAlign: "center" }}>
-          Enter New Password
+    <div className="Register">
+      <div className="register">
+        <div className="box">
+          <div className="heading">New Password</div>
+          <form
+            onSubmit={(e) => {
+              handlesubmit(e);
+            }}
+          >
+            <div className="password">
+              <input
+                type="password"
+                id="password"
+                placeholder="New Password"
+                value={password}
+                onChange={(e) => {
+                  setpassword(e.target.value);
+                }}
+              />
+            </div>
+            <div className="cpassword">
+              <input
+                type="password"
+                id="cpassword"
+                placeholder="Confirm new Password"
+                value={cpassword}
+                onChange={(e) => {
+                  setcpassword(e.target.value);
+                }}
+              />
+            </div>
+            <div className="registersubmit">
+              <input value="submit" type="submit" id="registersubmit" />
+            </div>
+          </form>
         </div>
-        <form
-          onSubmit={(e) => {
-            handlesubmit(e);
-          }}
-        >
-          <div className="keysub" style={{ textAlign: "center" }}>
-            <input
-              style={{ width: "200px" }}
-              type="password"
-              id="logintext"
-              value={password}
-              onChange={(e) => {
-                setpassword(e.target.value);
-              }}
-            />
-          </div>
-          <div className="keysubmit">
-            <input type="submit" value="Submit" id="loginsubmit" />
-          </div>
-        </form>
       </div>
     </div>
   );

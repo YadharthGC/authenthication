@@ -4,24 +4,23 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 
-function Login() {
+function Verify(props) {
   const [password, setpassword] = useState([]);
-  const [gmail, setgmail] = useState([]);
   const navigate = useNavigate();
+  const params = useParams();
+  let did = params.id;
 
   let handlesubmit = async (e) => {
     try {
       e.preventDefault();
-      let post = await axios.post("https://yadharthauth.herokuapp.com/login", {
-        gmail,
+      console.log(params);
+      let post = await axios.post("https://yadharthauth.herokuapp.com/verify", {
         password,
+        did,
       });
       window.alert(post.data.message);
       if (post.data.status === true) {
-        window.localStorage.setItem("app_token", post.data.token);
-        navigate("/urls", { replace: true });
-      } else if (post.data.status === false) {
-        navigate("/register", { replace: true });
+        navigate("/", { replace: true });
       }
     } catch (error) {}
   };
@@ -30,28 +29,17 @@ function Login() {
     <div className="Register">
       <div className="register">
         <div className="box">
-          <div className="heading">Login</div>
+          <div className="heading">Verify</div>
           <form
             onSubmit={(e) => {
               handlesubmit(e);
             }}
           >
-            <div className="gmail">
-              <input
-                type="text"
-                id="gmail"
-                placeholder="Gmail"
-                value={gmail}
-                onChange={(e) => {
-                  setgmail(e.target.value);
-                }}
-              />
-            </div>
             <div className="password">
               <input
                 type="password"
                 id="password"
-                placeholder="Password"
+                placeholder="Verification-code"
                 value={password}
                 onChange={(e) => {
                   setpassword(e.target.value);
@@ -59,15 +47,7 @@ function Login() {
               />
             </div>
             <div className="registersubmit">
-              <input value="Login" type="submit" id="registersubmit" />
-            </div>
-            <div className="group">
-              <div className="groupkey">
-                <Link to="/register">New user?</Link>
-              </div>
-              <div className="groupkey">
-                <Link to="fgmail">Forgot password?</Link>
-              </div>
+              <input value="Verify" type="submit" id="registersubmit" />
             </div>
           </form>
         </div>
@@ -76,4 +56,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Verify;

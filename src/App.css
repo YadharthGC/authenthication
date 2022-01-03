@@ -1,107 +1,111 @@
-.Login {
+.register {
   height: 100vh;
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.loginbox {
-  border: solid;
-  padding: 2%;
+.box {
+  border: solid 1px gray;
+  padding: 1.5%;
+  padding-top: 0.5%;
 }
-.key {
+.heading {
+  text-align: center;
+  font-size: 25px;
+  font-weight: 900;
+  text-decoration: underline;
   font-family: "Cinzel", serif;
-  margin-bottom: 10%;
-  text-decoration: underline;
-  text-align: center;
-  font-size: 30px;
 }
-.keysub {
-  font-family: "Josefin Sans", sans-serif;
-  margin-bottom: 5%;
-  font-size: 20px;
-}
-.keysubmit {
-  text-align: center;
-}
-#loginsubmit {
-  border: solid 1px black;
-  background-color: lightseagreen;
-  color: white;
-  border-radius: 3px;
+#fname,
+#lname,
+#password,
+#cpassword,
+#gmail {
   font-size: 20px;
   font-family: "Josefin Sans", sans-serif;
-}
-#logintext,
-#loginpassword {
-  border: solid 2px rgb(19, 18, 18);
-  border-radius: 2px;
-  height: 20px;
-  font-family: "Josefin Sans", sans-serif;
-}
-.logintext {
-  font-size: 13px;
-  font-family: "Josefin Sans", sans-serif;
-  text-align: center;
-  margin-top: 4%;
-}
-/* /////////////////////// */
-.title {
-  font-size: 20px;
-  font-weight: bolder;
-  font-family: Georgia, "Times New Roman", Times, serif;
   margin-top: 2%;
-  text-align: center;
-  text-decoration: underline;
+  border: solid 1.9px gray;
+  border-radius: 3px;
+  width: 96.8%;
+  padding: 3.5px;
 }
-.urls {
+#fname,
+#lname {
+  width: 45%;
+}
+#lname {
+  margin-left: 5%;
+}
+.registersubmit {
+  text-align: center;
+  margin-top: 2%;
+}
+#registersubmit {
+  font-size: 18px;
+  font-family: "Bellefair", serif;
+}
+.groupkey {
+  font-size: 14px;
+  font-family: "Josefin Sans", sans-serif;
+  text-align: center;
+  margin-top: 2%;
+}
+.group {
+  margin-top: 5%;
+}
+
+.url {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 3%;
 }
 .urlbox {
-  margin-top: 1%;
-  border: solid 1px black;
-  padding: 2%;
+  border: solid 1px gray;
+  padding: 9px;
 }
-.urltext,
-.shortsubmit {
+.inputa {
   text-align: center;
+  margin-top: 3%;
 }
-#urltext {
-  height: 20px;
-  border: solid 1px black;
-  border-radius: 3px;
-  margin-bottom: 2%;
-}
-#shortsubmit {
-  border: solid 1px black;
-  background-color: black;
-  color: white;
-  font-size: 20px;
-  border-radius: 6px;
-}
-/*///////////////URLTABLE/////////// */
 .urltable {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1%;
-  margin-bottom: 2%;
+  margin-top: 3%;
 }
-
 .key {
   text-align: center;
+  font-family: "Cinzel", serif;
+  font-size: 16px;
   font-weight: 900;
-}
-.keyans {
-  text-align: center;
+  color: black;
 }
 table,
 thead,
 tbody,
-td,
-tr {
-  border: solid 1px black;
+tr,
+td {
   border-collapse: collapse;
+  border: solid 1px gray;
+}
+.keyans {
+  text-align: center;
+}
+.keyans,
+.keyansl {
+  font-weight: 700;
+  font-family: "Josefin Sans", sans-serif;
+  padding-top: 1%;
+}
+
+.logout {
+  margin-top: 2%;
+  text-align: center;
+}
+.out {
+  font-size: 15px;
+  font-weight: 700;
+  font-family: "Josefin Sans", sans-serif;
+  padding: 3px;
 }
